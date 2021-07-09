@@ -1,0 +1,555 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="generator" content=""/>
+        <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
+        <h:outputStylesheet name="resources/css/style.css"/>
+        <link href="resources/css/style.css" rel="stylesheet"/>
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"/>
+        <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet"/>
+
+        <title>Coconut</title>
+
+
+        <style>
+
+
+
+
+            .text {
+                color: #ec5626;
+                text-align: center
+            }
+
+            .folded-corner:hover .text {
+                visibility: visible;
+                color: #000000;
+            }
+
+
+
+            .folded-corner {
+                padding: 60px 30px;
+                position: relative;
+                font-size: 100%;
+                text-decoration: none;
+                color: #999;
+                background: transparent;
+                transition: all ease .5s;
+                border: 1px solid #ec5626
+            }
+
+            .folded-corner:hover {
+                background-color: #ec5626
+            }
+
+            .folded-corner:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                border-style: solid;
+                border-width: 0 0px 0px 0;
+                border-color: #ddd #000;
+                transition: all ease .3s
+            }
+
+            .folded-corner:hover:before {
+                background-color: #D00003;
+                border-width: 0 50px 50px 0;
+                border-color: #eee #000
+            }
+
+            .service_tab_1 {
+                background-color: #000
+            }
+
+            .service_tab_1:hover .fa-icon-image {
+                color: #000;
+                transform: scale(1.5)
+            }
+
+            .fa-icon-image {
+                color: #ec5626;
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                font-weight: normal;
+                line-height: 1;
+                font-size-adjust: none;
+                font-stretch: normal;
+                -moz-font-feature-settings: normal;
+                -moz-font-language-override: normal;
+                text-rendering: auto;
+                transition: all .65s linear 0s;
+                text-align: center;
+                transition: all 1s cubic-bezier(.99, .82, .11, 1.41)
+            }
+        </style>
+
+    </h:head>
+
+    <h:body>
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid p-2">
+                    <h:link class="navbar-brand ms-4" outcome="index.xhtml"><img class="me-3" style="height: 50px;" src="resources/images/coconut-logo1.png" alt=""/>COCONUT ONLİNE COURSES</h:link>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                            <li class="nav-item pe-4"> <!-- all-courses -->
+                                <h:link class="nav-link" value="Bütün Kurslar" outcome="all-courses.xhtml"></h:link>
+                            </li>
+                            <li class="#{loginBean.getLogined()}"> <!-- my-courses -->
+                                <h:link class="nav-link" value="Benim Kurslarım" outcome="my-courses.xhtml"></h:link>
+                            </li>
+                            <li class="nav-item pe-4"> <!-- sepet -->
+                                <h:link class="nav-link" value="Sepet" outcome="sepet.xhtml"></h:link>
+                            </li>
+                            <li class="#{loginBean.getNotLogined()}"> <!-- register -->
+                                <h:link class="nav-link" value="Kayıt" outcome="register.xhtml"></h:link>
+                            </li>
+                            <li class="#{loginBean.getNotLogined()}">
+                                <h:link class="nav-link" value="Giriş" outcome="login.xhtml"></h:link>
+                            </li>    
+                            <li class="#{loginBean.getLogined()}"> <!-- Bilgilerim -->
+                                <h:link class="nav-link" value="#{loginBean.getUsername()}" outcome="profileSettings.xhtml"></h:link>
+                            </li>
+                            <h:form>
+                                <li class="#{loginBean.getLogined()}"> <!-- Logout -->
+                                    <h:commandLink class="nav-link" value="Çıkış" action="#{loginBean.logout()}"></h:commandLink>
+                                </li>
+                            </h:form>
+                            <h:form>
+                                <li>
+                                    <a class="dark-mode-toggle"  id="dark-mode-toggle" style="cursor:pointer; ">
+                                        <img id="dark-button" src="resources/images/aydinlik.png" style="width:40px; height: auto;"/>
+                                    </a>
+                                </li>
+                            </h:form>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <main class="container">
+            </main>
+        </header>
+
+
+        <!-- ADVANTAGES WITH ICONS ========================-->
+        <!-- internal css -->
+
+        <div  style="margin-top: 100px;" class="container">
+
+            <div style="margin-top: -40px;" class="row p-5" >
+
+                <div class="#{loginBean.isSuccessMessage()}" role="alert">
+                    <span type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="text-end" aria-hidden="true">x</span></span>
+                    <h:outputText value="#{loginBean.getMessage()}"/> 
+                </div>
+
+                <div class="col-md-4 Services-tab item ">
+                    <div class="folded-corner service_tab_1">
+                        <div class="text"> <i class="fas fa-chalkboard-teacher fa-5x"></i>
+                            <p class="item-title">
+                                <h3> Uzman Eğitmenler</h3>
+                            </p><!-- /.item-title -->
+                            <p> 
+                                Kurslarımızın hepsi alanında uzman olan eğitmenler tarafından profesyonelce hazırlanmıştır. Eğitmenlerimizin çoğu yurtiçi ve yurtdışındaki saygın üniversitelerde akademik çalışmalarına devam etmektedirler
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 Services-tab item">
+                    <div class="folded-corner service_tab_1">
+                        <div class="text"> <i class="fas fa-5x fa-mobile"></i>
+                            <p class="item-title">
+                                <h3> Mobil Uyumlu</h3>
+                            </p><!-- /.item-title -->
+                            <p style="margin-bottom: 40px;">
+                                Mobil uyumlu web tasarımı sayesinde bilgisayardan, tabletten, telefondan, istediğiniz yerde, istediğiniz zaman kolayca kurslara devam edebilirsiniz.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 Services-tab item">
+                    <div class="folded-corner service_tab_1">
+                        <div class="text"><i class="far fa-file-pdf fa-5x"></i>
+                            <p class="item-title">
+                                <h3> Ders Dökümanları</h3>
+                            </p>
+                            <p> 
+                                Eğitmenlerimiz tarafından özenle hazırlanan ders dökümanlarını ücretsiz olarak PDF formatında indirebilirsiniz. Dökümanlar içerisinde özetler, örnek sorular ve güncel kaynak tavsiyeleri bulunmaktadır
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- POPULAR COURSES ITEMS =============================-->
+        <section class="container">
+
+            <div class="p-3">
+                <div class="p-3">
+                    <h3 class="text-center ">POPÜLER KURSLAR</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="kurs 1" class="coursebox" >
+                        <div  class="">
+                            <div class=" text-center">
+                                <h3>
+                                    <h:outputFormat value="#{loginBean.showMeSayfaBaslik('1')}"/>
+                                </h3>
+                                <p>
+                                    <h:outputFormat value="#{loginBean.showMeSayfakAciklama('1')}"/>
+                                </p>
+
+                            </div>
+                            <span class="maxcourse"><img src="#{loginBean.showMeSayfaPicture('1')}" alt=""/></span>
+                        </div>
+                        <div class="course-price">
+                            <h:form>
+                                <ul class="add_cart">
+                                    <li class="">
+                                        <h:commandLink value="Sepete Ekle" action="#{loginBean.addSepet('1')}" >
+                                            <i class="fas fa-shopping-cart"></i> 
+                                        </h:commandLink>
+                                    </li>
+                                    <li>
+                                        <h:commandLink value="İncele" action="#{loginBean.incele('1')}" >
+                                            <i class="fas fa-info-circle"></i>
+                                        </h:commandLink>
+                                    </li>
+                                </ul>
+                            </h:form>
+                            <span class="">
+                                <span class=""> <strong>₺39.99</strong> </span>
+                            </span>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.courses box with price -->
+                <div class="col-md-4" >
+                    <div id="kurs2" class="coursebox" >
+                        <div class="">
+                            <div class=" text-center">
+                                <h3>
+                                    <h:outputFormat value="#{loginBean.showMeSayfaBaslik('2')}"/>
+                                </h3>
+                                <p>
+                                    <h:outputFormat value="#{loginBean.showMeSayfakAciklama('2')}"/>
+                                </p>
+
+                            </div>
+                            <span class="maxcourse"><img src="#{loginBean.showMeSayfaPicture('2')}" alt=""/></span>
+                        </div>
+                        <div class="course-price">
+                            <h:form>
+                                <ul class="add_cart">
+                                    <li class="">
+                                        <h:commandLink value="Sepete Ekle" action="#{loginBean.addSepet('2')}" >
+                                            <i class="fas fa-shopping-cart"></i> 
+                                        </h:commandLink>
+                                    </li>
+                                    <li>
+                                        <h:commandLink value="İncele" action="#{loginBean.incele('2')}" >
+                                            <i class="fas fa-info-circle"></i>
+                                        </h:commandLink>
+                                    </li>
+
+                                </ul>
+                                <span class="">
+                                    <span class=""> <strong>₺39.99</strong> </span>
+                                </span>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.coursebox2 -->
+                <div id="kurs3" class="col-md-4">
+                    <div class="coursebox" >
+                        <div class="">
+                            <div class=" text-center">
+                                <h3>
+                                    <h:outputFormat value="#{loginBean.showMeSayfaBaslik('3')}"/>
+                                </h3>
+                                <p>
+                                    <h:outputFormat value="#{loginBean.showMeSayfakAciklama('3')}"/>
+                                </p>
+
+                            </div>
+                            <span class="maxcourse"><img src="#{loginBean.showMeSayfaPicture('3')}" alt=""/></span>
+                        </div>
+                        <div class="course-price">
+                            <h:form>
+                                <ul class="add_cart">
+                                    <li class="">
+                                        <h:commandLink value="Sepete Ekle" action="#{loginBean.addSepet('3')}" >
+                                            <i class="fas fa-shopping-cart"></i> 
+                                        </h:commandLink>
+                                    </li>
+                                    <li>
+                                        <h:commandLink value="İncele" action="#{loginBean.incele('3')}" >
+                                            <i class="fas fa-info-circle"></i>
+                                        </h:commandLink>
+                                    </li>
+
+                                </ul>
+                                <span class="">
+                                    <span class=""> <strong>₺39.99</strong> </span>
+                                </span>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div id="kurs4" class="coursebox" >
+                        <div class="">
+                            <div class=" text-center">
+                                <h3>
+                                    <h:outputFormat value="#{loginBean.showMeSayfaBaslik('4')}"/>
+                                </h3>
+                                <p>
+                                    <h:outputFormat value="#{loginBean.showMeSayfakAciklama('4')}"/>
+                                </p>
+
+                            </div>
+                            <span class="maxcourse"><img src="#{loginBean.showMeSayfaPicture('4')}" alt=""/></span>
+                        </div>
+                        <div class="course-price">
+                            <h:form>
+                                <ul class="add_cart">
+                                    <li class="">
+                                        <h:commandLink value="Sepete Ekle" action="#{loginBean.addSepet('4')}" >
+                                            <i class="fas fa-shopping-cart"></i> 
+                                        </h:commandLink>
+                                    </li>
+                                    <li>
+                                        <h:commandLink value="İncele" action="#{loginBean.incele('4')}" >
+                                            <i class="fas fa-info-circle"></i>
+                                        </h:commandLink>
+                                    </li>
+
+                                </ul>
+                                <span class="">
+                                    <span class=""> <strong>₺39.99</strong> </span>
+                                </span>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.courses box with price -->
+                <div class="col-md-4" >
+                    <div id="kurs5" class="coursebox" >
+                        <div class="">
+                            <div class=" text-center">
+                                <h3>
+                                    <h:outputFormat value="#{loginBean.showMeSayfaBaslik('5')}"/>
+                                </h3>
+                                <p>
+                                    <h:outputFormat value="#{loginBean.showMeSayfakAciklama('5')}"/>
+                                </p>
+
+                            </div>
+                            <span class="maxcourse"><img src="#{loginBean.showMeSayfaPicture('5')}" alt=""/></span>
+                        </div>
+                        <div class="course-price">
+                            <h:form>
+                                <ul class="add_cart">
+                                    <li class="">
+                                        <h:commandLink value="Sepete Ekle" action="#{loginBean.addSepet('5')}" >
+                                            <i class="fas fa-shopping-cart"></i> 
+                                        </h:commandLink>
+                                    </li>
+                                    <li>
+                                        <h:commandLink value="İncele" action="#{loginBean.incele('5')}" >
+                                            <i class="fas fa-info-circle"></i>
+                                        </h:commandLink>
+                                    </li>
+
+                                </ul>
+                                <span class="">
+                                    <span class=""> <strong>₺39.99</strong> </span>
+                                </span>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- /.coursebox2 -->
+
+                <div class="col-md-4">
+                    <div id="kurs6" class="coursebox" >
+                        <div class="">
+                            <div class=" text-center">
+                                <h3>
+                                    <h:outputFormat value="#{loginBean.showMeSayfaBaslik('6')}"/>
+                                </h3>
+                                <p>
+                                    <h:outputFormat value="#{loginBean.showMeSayfakAciklama('6')}"/>
+                                </p>
+
+                            </div>
+                            <span class="maxcourse"><img src="#{loginBean.showMeSayfaPicture('6')}" alt=""/></span>
+                        </div>
+                        <div class="course-price">
+                            <h:form>
+                                <ul class="add_cart">
+                                    <li class="">
+                                        <h:commandLink value="Sepete Ekle" action="#{loginBean.addSepet('6')}" >
+                                            <i class="fas fa-shopping-cart"></i> 
+                                        </h:commandLink>
+                                    </li>
+                                    <li>
+                                        <h:commandLink value="İncele" action="#{loginBean.incele('6')}" >
+                                            <i class="fas fa-info-circle"></i>
+                                        </h:commandLink>
+                                    </li>
+
+                                </ul>
+                                <span class="">
+                                    <span class=""> <strong>₺39.99</strong> </span>
+                                </span>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+
+        </section>
+
+        <f:metadata>
+            <f:viewAction action="#{loginBean.shuffleMenu()}"/>
+        </f:metadata>
+
+        <!-- BUTTON ALL COURSES =============================-->
+        <div class="p-5 ">
+            <div class="container text-center">
+                <a href="all-courses.xhtml" class="btn-allcourse">Bütün Kurslar
+                    <div class="btn-allcoursee">
+                        <i class="fa fa-star fa-spin"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <br/>
+
+
+        <!-- info =============================-->
+        <div class="p-5 ">
+            <div class="container p-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="infoareawrap">
+                            <div class="text-center">
+                                <h:graphicImage class="text-center" style="border-radius: 50%;" width="128" height="128" value="#{loginBean.showMeYazarPicture('7')}"/>                  
+                            </div>
+                            <h1 class="text-center subtitle"><h:outputText value="#{loginBean.showMeYazarAd('7')}"/></h1>
+                            <p>
+                                <h:outputText style="text-align:center;" value="#{loginBean.showMeYazarBio('7')}"/>
+                            </p>
+                            <p><strong><h:outputText style="text-align:right;" value="#{loginBean.showMeYazarJob('7')}"/></strong></p>
+                        </div>
+                    </div>
+                    <!-- /.col-md-4 col -->
+                    <div class="col-md-4">
+                        <div class="infoareawrap">
+                            <div class="text-center">
+                                <h:graphicImage class="text-center" style="border-radius: 50%;" width="128" height="128" value="#{loginBean.showMeYazarPicture('8')}"/>                  
+                            </div>
+                            <h1 class="text-center subtitle"><h:outputText value="#{loginBean.showMeYazarAd('8')}"/></h1>
+                            <p>
+                                <h:outputText style="text-align:center;" value="#{loginBean.showMeYazarBio('8')}"/>
+                            </p>
+                            <p><strong><h:outputText style="text-align:right;" value="#{loginBean.showMeYazarJob('8')}"/></strong></p>
+                        </div>
+                    </div>
+                    <!-- /.col-md-4 col -->
+                    <div class="col-md-4">
+                        <div class="infoareawrap">
+                            <div class="text-center">
+                                <h:graphicImage class="text-center" style="border-radius: 50%;" width="128" height="128" value="#{loginBean.showMeYazarPicture('9')}"/>                  
+                            </div>
+                            <h1 class="text-center subtitle"><h:outputText value="#{loginBean.showMeYazarAd('9')}"/></h1>
+                            <p>
+                                <h:outputText style="text-align:center;" value="#{loginBean.showMeYazarBio('9')}"/>
+                            </p>
+                            <p><strong><h:outputText style="text-align:right;" value="#{loginBean.showMeYazarJob('9')}"/></strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TESTIMONIAL =============================-->
+        <div class=" ">
+            <div class="container p-5">
+                <div class="">
+                    <div class="s-comments">
+                        <div >
+                            <h2><span class="uppercase">Kullanici Yorum</span></h2>
+                            <img src="http://wowthemes.net/demo/salique/salique-boxed/images/temp/avatar2.png" alt="Awesome Support"/>
+                            <p>
+                                Coconut online kurslar sayesinde kısa sürede yazılım alanında kendimi geliştirdim. Seçkin eğitmenler sayesinde bir çok detaya hakim oldum. React Native Kursu sayesinde play store ve app store platformlarında kendi uygulamamı yayınladım
+                            </p>
+                            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- FOOTER =============================-->
+        <div class="footer text-center">
+            <div class="container">
+                <div class="row text-center">
+                    <p class="footernote">
+                        Connect with Us
+                    </p>
+                    <ul class="social-iconsfooter ">
+                        <li><a href="#"><i class="fa fa-phone"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram "></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                    <p>
+                        2021 Coconut Online Course<br/>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCRIPTS =============================-->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
+        <script src="js/script.js"></script>
+        <script src="resources/javascript/script.js"></script>
+
+
+
+
+    </h:body>
+</html>

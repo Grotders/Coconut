@@ -1,0 +1,276 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="generator" content=""/>
+        <link href="resources/css/style.css" rel="stylesheet"/>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"/>
+        <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet"/>
+
+
+
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: sans-serif;
+                /* background: linear-gradient(to right, #b92b27, #1565c0); */
+                background: linear-gradient(to right, #34e89e, #0f3443)
+            }
+
+            .card {
+                margin-bottom: 20px;
+                border: none;
+                border-radius: 20px;
+            }
+
+            .box {
+
+                padding: 50px;
+                border-radius: 20px;
+
+                background: #191919;
+
+
+                transition: 0.25s;
+
+            }
+
+            .box input[type="text"],
+            .box input[type="password"] {
+                border: 0;
+                background: none;
+                display: block;
+                margin: 20px auto;
+                text-align: center;
+                border: 2px solid #3498db;
+                padding: 10px 10px;
+                width: 250px;
+                outline: none;
+                color: white;
+                border-radius: 24px;
+                transition: 0.25s
+            }
+
+            .box h1 {
+                color: white;
+                text-transform: uppercase;
+                font-weight: 500
+            }
+
+            .box input[type="text"]:focus,
+            .box input[type="password"]:focus {
+                width: 300px;
+                border-color: #2ecc71
+            }
+
+            .box input[type="submit"] {
+                border: 0;
+                background: none;
+                display: block;
+                margin: 20px auto;
+                text-align: center;
+                border: 2px solid #2ecc71;
+                padding: 14px 40px;
+                outline: none;
+                color: white;
+                border-radius: 24px;
+                transition: 0.25s;
+                cursor: pointer
+            }
+
+            .box input[type="submit"]:hover {
+                background: #2ecc71
+            }
+
+            .forgot {
+                text-decoration: underline
+            }
+
+            ul.social-network {
+                list-style: none;
+                display: inline;
+                margin-left: 0 !important;
+                padding: 0
+            }
+
+            ul.social-network li {
+                display: inline;
+                margin: 0 5px
+            }
+
+            .social-network a.icoFacebook:hover {
+                background-color: #3B5998
+            }
+
+            .social-network a.icoTwitter:hover {
+                background-color: #33ccff
+            }
+
+            .social-network a.icoGoogle:hover {
+                background-color: #BD3518
+            }
+
+            .social-network a.icoFacebook:hover i,
+            .social-network a.icoTwitter:hover i,
+            .social-network a.icoGoogle:hover i {
+                color: #fff
+            }
+
+            a.socialIcon:hover,
+            .socialHoverClass {
+                color: #44BCDD
+            }
+
+            .social-circle li a {
+                display: inline-block;
+                position: relative;
+                margin: 0 auto 0 auto;
+                border-radius: 50%;
+                text-align: center;
+                width: 50px;
+                height: 50px;
+                font-size: 20px
+            }
+
+            .social-circle li i {
+                margin: 0;
+                line-height: 50px;
+                text-align: center
+            }
+
+            .social-circle li a:hover i,
+            .triggeredHover {
+                transform: rotate(360deg);
+                transition: all 0.2s
+            }
+
+            .social-circle i {
+                color: #fff;
+                transition: all 0.8s;
+                transition: all 0.8s
+            }
+
+        </style>
+
+
+    </h:head>
+    <h:body>
+
+        <!-- HEADER =============================-->
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid p-2">
+                    <h:link class="navbar-brand ms-4" outcome="index.xhtml"><img class="me-3" style="height: 50px;" src="resources/images/coconut-logo1.png" alt=""/>COCONUT ONLİNE COURSES</h:link>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                            <li class="nav-item pe-4"> <!-- all-courses -->
+                                <h:link class="nav-link" value="Bütün Kurslar" outcome="all-courses.xhtml"></h:link>
+                            </li>
+                            <li class="nav-item pe-4"> <!-- sepet -->
+                                <h:link class="nav-link" value="Sepet" outcome="sepet.xhtml"></h:link>
+                            </li>
+                            <li class="#{loginBean.getNotLogined()}"> <!-- register -->
+                                <h:link class="nav-link" value="Kayıt" outcome="register.xhtml"></h:link>
+                            </li>
+                            <li class="#{loginBean.getNotLogined()}">
+                                <h:link class="nav-link" value="Giriş" outcome="login.xhtml"></h:link>
+                            </li> 
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+
+            <main class="container">
+
+            </main>
+
+        </header>
+
+
+        <div class="container text-center" style="margin-top: 100px;">
+            <div class="row">
+
+                <div class="col-sm-10 offset-sm-1 col-md-8 offset-md-2 ">
+
+                    <div class="card">
+                        <h:form class="box">
+                            <div class="#{loginBean.isFailMessage()}" role="alert">
+                                <span type="button" class="close" data-dismiss="alert" aria-label="Close"><span class="text-end" aria-hidden="true">&times;</span></span>
+                                <strong> <h:outputText value="#{loginBean.getMessage()}"/> </strong> Tekrar deneyin..
+                            </div>
+                            
+                            <img class="mb-2 mt-2 " src="resources/images/coconut-logo1.png" alt="" width="" height="100px"/>
+                            <h1>KAYIT OL</h1>
+                            <p class="text-muted"> </p> 
+                          
+                             
+                            <h:inputText id="username" value="#{loginBean.usr}" a:placeholder="Kullanıcı Adı"/>
+                            <h:inputText id="email" value="#{loginBean.mail}" a:placeholder="E-Posta Adresi"/>
+
+
+                            <h:inputSecret id="password" value="#{loginBean.pw}" a:placeholder="Şifre"/>
+                            <h:inputSecret id="password2" value="#{loginBean.pw2}" a:placeholder="Tekrar Şifre"/>
+                            
+                            <label class="checkbox fs-6 text-light">
+                                <h:selectBooleanCheckbox value="#{loginBean.okudumOnayladim}" required="true"/> Şartları ve Gizlilik Politikasını Kabul ediyorum
+                            </label>
+                            
+                            <h:commandButton value="Kayıt Ol" action="#{loginBean.register()}"/>
+                            <div class="col-md-12">
+                                <ul class="social-network social-circle">
+                                    <li><a href="#" class="icoFacebook" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" class="icoTwitter" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" class="icoGoogle" title="Google +"><i class="fab fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- FOOTER =============================-->
+        <div class="footer text-center">
+            <div class="container">
+                <div class="row text-center">
+                    <p class="footernote">
+                        Connect with Us
+                    </p>
+                    <ul class="social-iconsfooter ">
+                        <li><a href="#"><i class="fa fa-phone"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram "></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                    <p>
+                        &copy; 2021 Coconut Online Course<br/>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load JS here for greater good =============================-->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+        <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+    </h:body>
+</html>

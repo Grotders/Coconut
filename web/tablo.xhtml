@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="generator" content=""/>
+        <link href="resources/css/style.css" rel="stylesheet"/>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous"/>
+        <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,600,700" rel="stylesheet"/>
+
+    </h:head>
+    <h:body>
+
+
+        <style>
+            .coursebox:hover {	
+                opacity: 0.7;
+
+            }
+        </style>
+
+
+
+        <!-- HEADER =============================-->
+        <header>
+            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <div class="container-fluid p-2">
+                    <h:link class="navbar-brand ms-4" outcome="index.xhtml"><img class="me-3" style="height: 50px;" src="resources/images/coconut-logo1.png" alt=""/>COCONUT ONLİNE COURSES</h:link>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                            <li class="nav-item pe-4"> <!-- all-courses -->
+                                <h:link class="nav-link" value="Bütün Kurslar" outcome="all-courses.xhtml"></h:link>
+                            </li>
+                            <li class="#{loginBean.getLogined()}"> <!-- my-courses -->
+                                <h:link class="nav-link" value="Benim Kurslarım" outcome="my-courses.xhtml"></h:link>
+                            </li>
+                            <li class="nav-item pe-4"> <!-- sepet -->
+                                <h:link class="nav-link" value="Sepet" outcome="sepet.xhtml"></h:link>
+                            </li> 
+                            <li class="#{loginBean.getLogined()}"> <!-- Bilgilerim -->
+                                <h:link class="nav-link" value="#{loginBean.getUsername()}" outcome="profileSettings.xhtml"></h:link>
+                            </li>
+                            <h:form>
+                                <li class="#{loginBean.getLogined()}"> <!-- Logout -->
+                                    <h:commandLink class="nav-link" value="Çıkış" action="#{loginBean.logout()}"></h:commandLink>
+                                </li>
+                            </h:form>
+                            <h:form>
+                                <li>
+                                    <a class="dark-mode-toggle"  id="dark-mode-toggle" style="cursor:pointer; ">
+                                        <img id="dark-button" src="resources/images/aydinlik.png" style="width:40px; height: auto;"/>
+                                    </a>
+                                </li>
+                            </h:form>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+
+            <main class="container">
+
+            </main>
+
+        </header>
+
+
+        <div class="container" style="margin-top: 100px;">
+
+            <div class="p-3">
+                <div class="p-3">
+                    <h3 class="text-center ">Ayın En Çok Sipariş Verenleri</h3>
+
+
+                </div>
+
+            </div>
+            <div class="container-fluid">
+                <div class="table-responsive"></div>
+
+                <h:dataTable value="#{loginBean.showTablo()}" var="myvariable" class="table table-striped table-bordered table-hover"
+                             border="1" cellpadding="5" cellspacing="0" binding="#{table}">
+                    <h:column>
+
+                        <f:facet name="header">No</f:facet>
+                            #{table.rowIndex+1}
+
+                    </h:column>
+
+                    <!-- Her h:column bloğu bir döngüyü ifade eder. Tablodaki o column(field) bitince diğer column'a geçer-->                   
+                    <h:column>
+                        <f:facet name="header">AD</f:facet>
+                        #{myvariable.AD}<!--Buradaki FIRSTNAME SQL komutu ile dönen sonuç tablosunun bir sütunu olmalı-->
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">SOYAD</f:facet>
+                        #{myvariable.SOYAD}<!--Buradaki LASTNAME SQL komutu ile dönen sonuç tablosunun bir sütunu olmalı-->
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">Sipariş Sayısı</f:facet>
+                        #{myvariable.SIPARIS}<!--Buradaki STREET SQL komutu ile dönen sonuç tablosunun bir sütunu olmalı-->
+                    </h:column>
+                </h:dataTable>
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+        <!-- FOOTER =============================-->
+        <div class="footer text-center">
+            <div class="container">
+                <div class="row text-center">
+                    <p class="footernote">
+                        Connect with Us
+                    </p>
+                    <ul class="social-iconsfooter ">
+                        <li><a href="#"><i class="fa fa-phone"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram "></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                    <p>
+                        &copy; 2021 Coconut Online Course<br/>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load JS here for greater good =============================-->
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+        <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+
+    </h:body>
+</html>
