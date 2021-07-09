@@ -1,0 +1,146 @@
+############### CREATE TABLE ####################
+CREATE TABLE USERINFO
+(
+username varchar(255) NOT NULL PRIMARY KEY,
+password varchar(255) NOT NULL,
+customer_id int NOT NULL UNIQUE
+);
+############## INSERT #######################
+INSERT INTO APP.USERINFO (username, password, customer_id)
+VALUES
+('Oguzcan', '12345', 1),
+('Irfan ', '12345', 2),
+('Aytuna ', '12345', 3),
+('Nazli', '12345', 4),
+('Ayşe', '12345', 5),
+('Tuna', '12345', 6),
+('Nihan', '12345', 7),
+('Gizem', '12345', 8),
+('Kader', '12345', 9),
+('Ahmet', '12345', 10);
+
+
+###############################################
+CustomerInfo :  customer_id , isim, soyisim, telno, mail, bio, okul
+################# CREATE TABLE ###################
+CREATE TABLE CUSTOMERINFO
+(
+customer_id int not null primary key generated always as identity (start with 1, increment by 1),
+ad varchar(255),
+soyad varchar(255),
+telno varchar(255),
+mail varchar(255),
+bio varchar(255),
+okul varchar(255)
+);
+
+
+################# INSERT #######################
+INSERT INTO APP.CUSTOMERINFO (ad , soyad, telno, mail, bio, okul)
+VALUES
+('oguzcan', 'bicer', '111111111', 'oguzca@hotmail', '', 'iuc'),
+('Irfan', 'ONUR', '222222222', 'Irfan@hotmail', '', 'iuc'),
+('Aytuna', 'AYYILDIZ', '333333333', 'Aytuna@hotmail', '', 'iuc'),
+('Nazli', 'KARABAY', '44444444', 'Nazli@hotmail', '', 'iuc'),
+('Ayşe', 'KORUCU', '555555555', 'Ayşe@hotmail', '', 'iuc'),
+('Tuna', 'AKYEL', '6666666666', 'Tuna@hotmail', '', 'iuc'),
+('Nihan', 'YABUL', '7777777777', 'Nihan@hotmail', '', 'iuc'),
+('Gizem', 'TEZER', '8888888888', 'Gizem@hotmail', '', 'iuc'),
+('Kader', 'YERAL', '999999999', 'Kader@hotmail', '', 'iuc'),
+('Ahmet', 'SULUOVA', '101010101010', 'Ahmet@hotmail', '', 'iuc');
+
+
+####################################################
+Kurslar  :  kurs_id, yazar_id, baslik, kAciklama, aciklama, aciklama2, kategori, dersSayisi, süre, intro, playlist
+################### CREATE TABLE ########################
+CREATE TABLE KURSLAR
+(
+kurs_id int NOT NULL PRIMARY KEY,
+yazar_id int NOT NULL,
+baslik VARCHAR(255) NOT NULL,
+kAciklama VARCHAR(255) NOT NULL,
+kategori VARCHAR(255) NOT NULL,
+dersSayisi int NOT NULL,
+süre VARCHAR(255) NOT NULL,
+intro VARCHAR(255) NOT NULL,
+playlist VARCHAR(255) NOT NULL
+);
+
+
+################## INSERT ###########################
+INSERT INTO APP.KURSLAR (kurs_id, yazar_id, baslik, kAciklama, kategori, dersSayisi, süre, intro, playlist) 
+VALUES
+(1, 1, 'JAVASCRIPT Kursu', 'Bu kurs ile JAVASCRIPT dünyasına giriş yapın.', 'Web Geliştirme', 64, '10.5 saat', 'https://www.youtube.com/embed/2md4HQNRqJA', 'https://www.youtube.com/embed/videoseries?list=PLRAV69dS1uWSxUIk5o3vQY2-_VKsOpXLD '),
+(2, 2, 'HTML Kursu', 'Bu kurs ile HTML dünyasına giriş yapın.', 'Web Geliştirme', 43, '10.5 saat', 'https://www.youtube.com/embed/TKYsuU86-DQ', 'https://www.youtube.com/embed/videoseries?list=PL0eyrZgxdwhwNC5ppZo_dYGVjerQY3xYU '),
+(3, 3, 'C Programming Kursu', 'Stanford üniversitesinin dersleriyle C dilini öğrenin.', 'Programlama Dilleri', 27, '22.5 saat', 'https://www.youtube.com/embed/Ps8jOj7diA0', 'https://www.youtube.com/embed/videoseries?list=PL9D558D49CA734A02 '),
+(4, 4, 'JAVA Kursu', 'Bu kurs ile JAVA dünyasına giriş yapın.', 'Programlama Dilleri', 8, '1.5 saat', 'https://www.youtube.com/embed/ElpitAfkRS4', 'https://www.youtube.com/embed/videoseries?list=PLXtTjtWmQhg1SsviTmKkWO5n0a_-T0bnD '),
+(5, 5, 'Photoshop Kursu', 'Bu kurs ile Photoshop dünyasına giriş yapın.', 'Illustrasyon', 158, '25.5 saat', 'https://www.youtube.com/embed/bU-0ZJcnAOc', 'https://www.youtube.com/embed/videoseries?list=PLbZ7wm9Fo8Q8Gifd7NvHebU5kslsO8T_v '),
+(6, 6, 'SQL Kursu', 'Bu kurs ile Database dünyasına giriş yapın.', 'Database', 46, '5 saat', 'https://www.youtube.com/embed/y2CICRujsVw', 'https://www.youtube.com/embed/videoseries?list=PLWPirh4EWFpGKVoAXc4EjgaV4jbAyLrxe '),
+(7, 7, 'Bootstrap Kursu', 'Hızlandırılmış bootstrap dersi.', 'Web Geliştirme', 6, '34 dakika', 'https://www.youtube.com/embed/STGGniMV0jg', 'https://www.youtube.com/embed/videoseries?list=PLdxWrq0zBgPV3qHLzRzPhnIXB-2gscdxJ '),
+(8, 2, 'AJAX Kursu', 'Bu kurs ile eski teknoloji dünyasına giriş yapın.', 'Web Geliştirme', 5, '1.5 saat', 'https://www.youtube.com/embed/tNKD0kfel6o', 'https://www.youtube.com/embed/videoseries?list=PLb5y5MwYEHMgzyWAkgRqqjiY_wXL7OCH8 '),
+(9, 8, 'Network Security Kursu', 'MIT ile network security giris', 'Ağ ve Güvenlik', 22, '29.5 saat', 'https://www.youtube.com/embed/GqmQg-cszw4', 'https://www.youtube.com/embed/videoseries?list=PLUl4u3cNGP62K2DjQLRxDNRi0z2IRWnNh '),
+(10, 9, 'Computer Science Kursu', 'Bu kurs ile Bilgisayarın dünyasına giriş yapın.', 'Bilgisayar temelleri', 41, '8 saat', 'https://www.youtube.com/embed/tpIctyqH29Q', 'https://www.youtube.com/embed/videoseries?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo ');
+
+##########################################################
+
+################## CREATE TABLE ######################
+CREATE TABLE YAZARLAR
+(
+yazar_id int NOT NULL PRIMARY KEY,
+adSoyad VARCHAR(255) NOT NULL,
+job VARCHAR(255) NOT NULL,
+bio VARCHAR(255) NOT NULL
+);
+################## INSERT ###########################
+INSERT INTO APP.YAZARLAR (yazar_id, adSoyad, job, bio)
+VALUES
+(1, 'HItesh Choudhary', 'Tech Video Creator at Youtube', 'I like to make videos related to code and tech in my free time. I also lead a few tech teams in startups, help in hiring talent for companies. I am also on a part time traveller, with 31 countries checked off so far!'),
+(2, 'Dani Krossing', 'Senior Frontend Developer at Google', 'Daniel W. S is a Norwegian Developer born in Bergen, Norway. posts videos mainly consisting of him developing games in Unity using the C# programming language. '),
+(3, 'Jerry Cain', 'Senior Lecturer at Stanford University', 'Jerry Cain is a lecturer in the Computer Science department. He has taught fundamental computer science courses, including CS106A, CS107 and CS110.'),
+(4, 'Tim Buchalka', 'Java Python Android and C# Expert Developer', 'Tim"s been software developer for over 35 years. Major companies such as Fujitsu, Mitsubishi, and Saab. Video courses are used to train developers in major companies such as Mercedes-Benz, Paypal, VW, just to name a few.'),
+(5, 'Sinan Soylu', 'cgstudyo.com Kurucusu', 'Burası Adobe Photoshop, Premier Pro, After Effect, Lightroom ve 3ds Max gibi programları öğrenmek isteyenlerin adresidir. Birkaç iyi adam olmalı kendi öğrendiğini anlatmadan duramayacak… Dünyaya umut verebilmek için… En çok da aydınlanalım diye…'),
+(6, 'Anadi Sharma', 'Works India Private Limited', 'Technical Trainer For Angular, React, C, C#, C++, Computer Fundamentals, DBMS, Data Structures, HTML/CSS, HTML5, Javascript, Jquery, Microsof.Net, PL/SQL And Web Services With 7 Years Of Teaching Experience'),
+(7, 'Christina Knudson', 'Assistant professor at St. Thomas', 'Assistant professor of statistics in the University of St. Thomas‘ Department of Mathematics. My research spans a few topics, but one of my main contributions to the statistical community is the R package glmm, which has over 1000 downloads per month.'),
+(8, 'Nickolai Zeldovich', 'Professor at MIT', 'Nickolai Zeldovich is a professor of Electrical Engineering and Computer Science at MIT, and a member of the Computer Science and Artificial Intelligence Laboratory. He received his PhD from Stanford University in 2008. '),
+(9, 'Carrie Anne Philbin', 'Director of Educator Support @Raspberry_Pi', 'MBE is an English teacher of computer science and an author. She is a director of educator support at the Raspberry Pi Foundation and chairs the Computing At School (CAS) diversity and inclusion group, #CASInclude. ');
+#####################################################
+
+OrderList:  order_id, kurs_id, customer_id
+################## CREATE TABLE ######################
+CREATE TABLE ORDERLIST
+(
+order_id  int not null primary key generated always as identity (start with 1, increment by 1),
+customer_id int NOT NULL,
+kurs_id int NOT NULL
+);
+
+################## INSERT ###########################
+INSERT INTO APP.ORDERLIST(customer_id, kurs_id)
+VALUES
+(1, 1),
+(1, 2),
+(2,4),
+(3, 6),
+(3, 5),
+(3, 1),
+(4, 9),
+(4, 10),
+(5, 3),
+(5, 2),
+(5, 5),
+(5, 9),
+(5, 8),
+(5, 7),
+(5, 4),
+(6, 4),
+(6, 5),
+(7, 2),
+(8, 1),
+(8, 4),
+(8, 2),
+(9, 3),
+(8, 10),
+(10, 8),
+(10, 4);
+
+
